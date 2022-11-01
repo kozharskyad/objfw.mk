@@ -1,0 +1,16 @@
+CompileFlags:
+  Add:
+    - -fobjc-arc
+    - -fobjc-arc-exceptions
+    - -IObjFW/include
+    - -fexceptions
+    - -fobjc-exceptions
+    - -funwind-tables
+    - -fconstant-string-class=OFConstantString
+    - -Xclang
+    - -fno-constant-cfstrings
+    - -Xclang
+    - -fblocks
+    - -c
+    - -O0
+    - -g

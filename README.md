@@ -68,3 +68,5 @@ app_complex/some_application
 app_complex/some_library1
 app_complex/some_library2
 ```
+
+#### See [example](https://github.com/kozharskyad/objfw.mk/blob/main/example/)
