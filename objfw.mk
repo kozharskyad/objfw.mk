@@ -49,7 +49,7 @@ C_PRT=$(info $(shell $(PRINTF) '$(PROJECT_NAME) | $(1)$(2)$(C_RST)\n'))
 OFBIN=$(shell dirname "$(OFCFG)")
 OFROOT=$(shell dirname "$(OFBIN)")
 OFINCL=$(OFROOT)/include
-PROJECT_NAME?=$(notdir "$(PWD)")
+PROJECT_NAME?=$(notdir $(PWD))
 PROJECT_TYPE?=app
 ARCHIVE_FILE_NAME=$(PROJECT_NAME).tgz
 RELEASE?=0
@@ -173,7 +173,7 @@ ifeq ($(PROJECT_TYPE),app)
 	$(call C_PRT,$(C_GRN),$(strip Linking $(notdir $(PROJECT_DEPS_LIBFILES)) $(OBJS) -> $(C_RED)$(TARGET)))
 	$(V)$(RM) $(RMFLAGS) tmp
 	$(V)$(MD) $(MDFLAGS) tmp; cd tmp; $(foreach DEP_LIBFILE,$(PROJECT_DEPS_LIBFILES),ar -xv $(DEP_LIBFILE) $(O) || exit 1;)
-	$(V)$(strip $(LD) tmp/*.o $^ -o $@ $(LDSSLFLAGS) $(LDFLAGS))
+	$(V)$(strip $(LD) $(if $(PROJECT_DEPS_LIBFILES),tmp/*.o,) $^ -o $@ $(LDSSLFLAGS) $(LDFLAGS))
 	$(V)$(RM) $(RMFLAGS) tmp
 ifeq ($(RELEASE),1)
 	$(V)$(STRIP) $(STRIPFLAGS) $@
