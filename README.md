@@ -10,6 +10,7 @@ Builds every .m source in a project directory and compile all specified dependen
 mkdir objfw_project
 cd objfw_project
 curl -skLO https://github.com/kozharskyad/objfw.mk/raw/main/objfw.mk
+make -f objfw.mk init
 ```
 
 Or download with WGET
