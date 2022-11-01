@@ -58,6 +58,7 @@ PROJECT_TYPE=lib
 PROJECT_NAME=some_application
 PROJECT_TYPE=app
 PROJECT_DEPS=some_library1 some_library2
+PROJECT_DEP_some_library2_DIR=/path/to/some_library2
 ```
 
 ### Structure example
@@ -67,7 +68,9 @@ Dependency manager automatically search dependencies directories at parent direc
 ```
 app_complex/some_application
 app_complex/some_library1
-app_complex/some_library2
+/path/to/some_library2
 ```
+
+You can set absolute path to every dependency in format `PROJECT_DEP_<dependency_name>_DIR=/path/to/dependency`.
 
 #### See [example](https://github.com/kozharskyad/objfw.mk/blob/main/example/)
