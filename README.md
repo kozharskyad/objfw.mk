@@ -31,6 +31,24 @@ OR
 make build
 ```
 
+With optimization
+
+```
+make RELEASE=1
+```
+
+With verbose output
+
+```
+make VERBOSE=1
+```
+
+TGZ packaging
+
+```
+make package
+```
+
 ### Generated Makefile
 
 * You can change project name by editing PROJECT_NAME Makefile variable
