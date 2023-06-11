@@ -171,9 +171,7 @@ build: $(TARGET)
 $(TARGET): $(OBJS)
 ifeq ($(PROJECT_TYPE),app)
 	$(call C_PRT,$(C_GRN),$(strip Linking $(notdir $(PROJECT_DEPS_LIBFILES)) $(OBJS) -> $(C_RED)$(TARGET)))
-	$(V)$(RM) $(RMFLAGS) tmp
-	$(V)$(MD) $(MDFLAGS) tmp; cd tmp; $(foreach DEP_LIBFILE,$(PROJECT_DEPS_LIBFILES),ar -xv $(DEP_LIBFILE) $(O) || exit 1;)
-	$(V)$(strip $(LD) $(if $(PROJECT_DEPS_LIBFILES),tmp/*.o,) $^ -o $@ $(LDSSLFLAGS) $(LDFLAGS))
+	$(V)$(strip $(LD) $(PROJECT_DEPS_LIBFILES) $^ -o $@ $(LDSSLFLAGS) $(LDFLAGS))
 	$(V)$(RM) $(RMFLAGS) tmp
 ifeq ($(RELEASE),1)
 	$(V)$(STRIP) $(STRIPFLAGS) $@
@@ -214,7 +212,8 @@ vscode: .vscode .vscode/launch.json .vscode/settings.json .vscode/tasks.json
 .vscode/settings.json:
 	$(V)$(PRINTF) '{\n' > $@
 	$(V)$(PRINTF) '  "files.associations": {\n' >> $@
-	$(V)$(PRINTF) '    "*.h": "objective-c"\n' >> $@
+	$(V)$(PRINTF) '    "*.h": "objective-c",\n' >> $@
+	$(V)$(PRINTF) '    "*.m": "objective-c"\n' >> $@
 	$(V)$(PRINTF) '  }\n' >> $@
 	$(V)$(PRINTF) '}\n' >> $@
 

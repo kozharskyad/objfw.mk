@@ -2,7 +2,7 @@ CompileFlags:
   Add:
     - -fobjc-arc
     - -fobjc-arc-exceptions
-    - -IObjFW/include
+    - -I/Users/a.kozharsky/Programs/ObjFW/include
     - -fexceptions
     - -fobjc-exceptions
     - -funwind-tables

@@ -2,7 +2,7 @@
 #import "app.h"
 
 @implementation App
-- (void)applicationDidFinishLaunching {
+- (void)applicationDidFinishLaunching:(OFNotification *)notification {
   OFLog(@"Hello, World!");
   [OFApplication terminate];
 }
