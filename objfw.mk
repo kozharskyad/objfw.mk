@@ -191,7 +191,7 @@ init: update Makefile
 
 update: .clangd vscode
 
-vscode: .vscode .vscode/launch.json .vscode/settings.json .vscode/tasks.json
+vscode: .vscode .vscode/launch.json .vscode/settings.json .vscode/tasks.json .vscode/extensions.json
 
 .vscode/launch.json:
 	$(V)$(PRINTF) '{\n' > $@
@@ -230,6 +230,13 @@ vscode: .vscode .vscode/launch.json .vscode/settings.json .vscode/tasks.json
 	$(V)$(PRINTF) '  ]\n' >> $@
 	$(V)$(PRINTF) '}\n' >> $@
 
+.vscode/extensions.json:
+  $(V)$(PRINTF) '{\n' > $@
+  $(V)$(PRINTF) '  "recommendations": [\n' >> $@
+  $(V)$(PRINTF) '    "llvm-vs-code-extensions.vscode-clangd"\n' >> $@
+  $(V)$(PRINTF) '  ]\n' >> $@
+  $(V)$(PRINTF) '}\n' >> $@
+
 .vscode:
 	$(V)$(MD) $(MDFLAGS) $@
 
@@ -257,4 +264,4 @@ clean:
 	$(V)$(foreach DEP_DIR,$(PROJECT_DEPS_DIRS),$(MAKE) -C $(DEP_DIR) clean PARENT_PROJECT=$(PROJECT_NAME);)
 	$(V)$(RM) $(RMFLAGS) $(TARGET) $(TARGET).exe $(PROJECT_NAME) $(ARCHIVE_FILE_NAME) *.o deps.built
 
-.PHONY: all build clean init deps .clangd update vscode .vscode/launch.json .vscode/settings.json .vscode/tasks.json
+.PHONY: all build clean init deps .clangd update vscode .vscode/launch.json .vscode/settings.json .vscode/tasks.json .vscode/extensions.json
