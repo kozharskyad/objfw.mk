@@ -231,11 +231,11 @@ vscode: .vscode .vscode/launch.json .vscode/settings.json .vscode/tasks.json .vs
 	$(V)$(PRINTF) '}\n' >> $@
 
 .vscode/extensions.json:
-  $(V)$(PRINTF) '{\n' > $@
-  $(V)$(PRINTF) '  "recommendations": [\n' >> $@
-  $(V)$(PRINTF) '    "llvm-vs-code-extensions.vscode-clangd"\n' >> $@
-  $(V)$(PRINTF) '  ]\n' >> $@
-  $(V)$(PRINTF) '}\n' >> $@
+	$(V)$(PRINTF) '{\n' > $@
+	$(V)$(PRINTF) '  "recommendations": [\n' >> $@
+	$(V)$(PRINTF) '    "llvm-vs-code-extensions.vscode-clangd"\n' >> $@
+	$(V)$(PRINTF) '  ]\n' >> $@
+	$(V)$(PRINTF) '}\n' >> $@
 
 .vscode:
 	$(V)$(MD) $(MDFLAGS) $@
